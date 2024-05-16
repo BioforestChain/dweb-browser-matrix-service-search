@@ -27,7 +27,7 @@ func InitRedis() {
 }
 
 func initRedisPool(dbName string) ([]redisHelper.RedisInstance, error) {
-	path := fmt.Sprintf("%sconfig/%s/redis.yml", ProjectPath(), DevEnv)
+	path := fmt.Sprintf("%smanifest/config/%s/redis.yml", ProjectPath(), DevEnv)
 
 	cfg, err := config.GetConfig(path)
 	if err != nil {

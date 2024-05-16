@@ -108,18 +108,19 @@ func setBodyData(bodyData interface{}) io.Reader {
 // initClient 获取HTTP.Client实例
 func initClient(request Request) (client http.Client) {
 	// 忽略 https 证书校验
-	var responseheadertimeout time.Duration = 0
+	var responseHeaderTimeout time.Duration = 0
 	if request.RespTimeOut > 0 {
-		responseheadertimeout = time.Second * request.RespTimeOut
+		responseHeaderTimeout = time.Second * request.RespTimeOut
 	}
 	transport := &http.Transport{
 		TLSClientConfig: &tls.Config{
 			InsecureSkipVerify: true,
 		},
-		MaxIdleConns:          0,
+		MaxIdleConns:          100,
 		MaxIdleConnsPerHost:   400,
-		IdleConnTimeout:       30 * time.Second,
-		ResponseHeaderTimeout: responseheadertimeout,
+		IdleConnTimeout:       60 * time.Second,
+		ResponseHeaderTimeout: responseHeaderTimeout,
+		MaxConnsPerHost:       20,
 	}
 
 	client = http.Client{Transport: transport}

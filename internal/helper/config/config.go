@@ -38,6 +38,17 @@ func GetDomainMark(fileName string) string {
 	return domainMark
 
 }
+func GetCfgValueFromYml(fileName, keyName string) string {
+	var mark string
+	path := fmt.Sprintf("%smanifest/config/%s/%s.yml", bootstrap.ProjectPath(), bootstrap.DevEnv, fileName)
+	Configs, err := config.GetConfig(path)
+	if err != nil {
+		return mark
+	}
+	mark, _ = Configs.String(keyName)
+	return mark
+}
+
 func GetKeyValue(fileName string, keyName string) string {
 	var domainMark string
 	path := fmt.Sprintf("%smanifest/config/%s/%s.yml", bootstrap.ProjectPath(), bootstrap.DevEnv, fileName)

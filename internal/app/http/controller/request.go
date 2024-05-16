@@ -57,8 +57,8 @@ func (req Request) ShouldBindQuery(obj any) error {
 
 // ShouldBindJSON 使用注意，只能获取一次，无法重复获取
 // ShouldBindWith for better performance if you need to call only once.
-func (req Request) ShouldBindJSON(obj any) {
-	_ = req.GCtx.ShouldBindJSON(obj)
+func (req Request) ShouldBindJSON(obj any) error {
+	return req.GCtx.ShouldBindJSON(obj)
 }
 
 func (req Request) IsMimeJson() bool {
@@ -112,4 +112,14 @@ func (req Request) GetValidMsg(err error, obj interface{}) string {
 	}
 
 	return err.Error()
+}
+
+// GetUserId 获取用户id
+func (req Request) GetUserId() uint32 {
+	var userId uint32
+	if val, ok := req.GCtx.Get("user_id"); ok && val != nil {
+		userId, _ = val.(uint32)
+	}
+
+	return userId
 }

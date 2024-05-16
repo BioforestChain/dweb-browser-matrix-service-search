@@ -1,1 +1,3 @@
 curl:
+
+matrixClientUserSearch: "/_matrix/client/v3/dWeb_user_directory/search"

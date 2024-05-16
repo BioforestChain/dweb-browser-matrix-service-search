@@ -24,55 +24,12 @@
 - test：测试环境, 主要提供给测试同学测试使用
 - bvt：预发环境, 正式环境数据库一致, 预发环境测试通过后才可以发布线上环境
 
-## 目录结构
-
-``` 
-.
-├── Dockerfile          
-├── LICENSE
-├── README.md
-├── app                 # 应用代码
-│   ├── entity            # 各种结构体定义
-│   ├── grpc              # 提供GRPC服务
-│   ├── http              # 提供HTTP服务
-│   ├── logic             # 逻辑层
-│   ├── models            # 数据模型层，数据表实体类
-│   └── services          # 服务层
-├── bootstrap          
-│   ├── app.go
-│   ├── config.go
-│   ├── database.go
-│   └── redis.go 
-├── config              # 各个环境配置
-│   ├── bvt
-│   ├── local
-│   ├── online
-│   └── test
-├── go-build.sh         # 用于ci构建
-├── go.mod
-├── go.sum
-├── helpers             # 常用类库封装
-│   ├── config
-│   ├── env
-│   ├── errors
-│   ├── logger
-│   └── strings
-├── http-server
-├── main.go             # 入口文件
-└── routes              # 路由文件夹
-    ├── base.go
-    ├── other.go
-    └── prize.go    
-    
-```
-
 ## 本地环境配置
 
 1. 拉取代码
     ```shell
     git clone git@github.com:JasonMetal/submodule-support-go.git
     ```
-
 
 2. 启动
 

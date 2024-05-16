@@ -7,7 +7,10 @@ import (
 
 func RegisterUser(router *gin.Engine) {
 
-	router.GET("/user-list", func(ctx *gin.Context) {
-		userController.NewController(ctx).UserList()
+	router.POST("/user-info", func(ctx *gin.Context) {
+		userController.NewController(ctx).UserInfo()
 	})
+	//router.GET("/user-list", func(ctx *gin.Context) {
+	//	userController.NewController(ctx).UserList()
+	//})
 }

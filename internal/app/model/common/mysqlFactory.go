@@ -6,5 +6,5 @@ import (
 
 // ConnectionObject 获取 业务 库客户端连接对象
 func ConnectionObject(ctx context.Context) *MysqlClient {
-	return NewMysqlClient(ctx, "film")
+	return NewMysqlClient(ctx, "matrix-service-search")
 }
